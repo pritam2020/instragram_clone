@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">instragram_clone</string>
+    <string name="enter_password">enter password</string>
+    <string name="enter_email">enter mail</string>
+    <string name="delete_account">delete account</string>
+    <string name="enter_your_name">enter your name</string>
+    <string name="create">create</string>
+    <string name="let_s_finish_the_process">let\'s finish the process !</string>
+    <string name="set_a_profile_picture">set a profile picture</string>
+    <string name="unfollow">unfollow</string>
+    <string name="follow">follow</string>
+    <string name="ypor_bio_description">your bio/description</string>
+    <string name="remain_anonimious">remain anonimious</string>
+    <string name="next">next</string>
+</resources>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".my_bio"
+    android:background="@drawable/gradient">
+
+
+    <EditText
+        android:id="@+id/bio"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/edittext"
+        android:ems="10"
+        android:hint="@string/ypor_bio_description"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26"
+        android:autofillHints="" />
+
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+
+        android:id="@+id/materialCheckBox"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="308dp"
+        android:layout_marginLeft="308dp"
+        android:layout_marginTop="40dp"
+        app:buttonTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="@+id/t1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/t1"
+        app:layout_constraintVertical_bias="0.53" />
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/remain_anonimious"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/materialCheckBox"
+        app:layout_constraintStart_toStartOf="@+id/bio"
+        app:layout_constraintTop_toBottomOf="@+id/bio" />
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="@string/next"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.81" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
