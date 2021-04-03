@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -38,6 +39,7 @@ public class recent_logs_adapter extends RecyclerView.Adapter<recent_logs_adapte
         this.name=name;
         this.valueEventListener=valueEventListener;
         this.photo=photo;
+
     }
 
     @NonNull
@@ -50,6 +52,9 @@ public class recent_logs_adapter extends RecyclerView.Adapter<recent_logs_adapte
 
     @Override
     public void onBindViewHolder(@NonNull recent_logs_adapter.MyViewHolder holder, int position) {
+//        Collections.reverse(reacted_photo);
+//        Collections.reverse(name);
+//        Collections.reverse(photo);
         dbb=mref.getReference("user_details");
         dbbb=mref.getReference("userinfo");
        String Name=name.get(position);

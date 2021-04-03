@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
 public class recent_logs extends Fragment {
 
@@ -37,6 +38,9 @@ public class recent_logs extends Fragment {
     String username;
     String username1;
     DatabaseReference dbbb;
+    ArrayList<String> name= new ArrayList<>();
+    ArrayList<String> photo=new ArrayList<>();
+    ArrayList<String> reacted_photo=new ArrayList<>();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -62,12 +66,11 @@ public class recent_logs extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                reacted_photo.clear();   //
-//                photo.clear();   //
-//                name.clear();    //
-                ArrayList<String> name=new ArrayList<>();
-                ArrayList<String> photo=new ArrayList<>();
-                ArrayList<String> reacted_photo=new ArrayList<>();
+                 //
+                reacted_photo.clear();   //
+                photo.clear();   //
+                name.clear();
+
                 for(DataSnapshot ds:snapshot.getChildren()){
 
                     if(Objects.equals(ds.getKey(), auth)){
@@ -104,9 +107,12 @@ public class recent_logs extends Fragment {
                 }
                 lm = new LinearLayoutManager(getContext());
                 rv.setLayoutManager(lm);
+
                 adapter=  new recent_logs_adapter(reacted_photo,name,photo,this);
                 if(name.size()!=0){
-                    rv.setAdapter( adapter);}
+                    rv.setAdapter( adapter);
+
+                }
                 else {text.setVisibility(View.VISIBLE);
                     text.setText("no logs to show");}
             }

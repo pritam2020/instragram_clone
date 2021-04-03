@@ -53,8 +53,9 @@ public class my_bio extends AppCompatActivity {
 
                 }
                 Intent intent = new Intent(my_bio.this, Main2Activity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-                finishAffinity();
+                //finishAffinity();
 
             }
         });

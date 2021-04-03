@@ -28,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -45,6 +46,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolderm>{
     String user;
     String pass="null";
     int c=0;
+    DatabaseReference ppp;
+    DatabaseReference pp;
+    ValueEventListener vl;
+    String key;
+    String pop;
 
    final FirebaseDatabase mref= FirebaseDatabase.getInstance("https://instragram-clone-7ff94.firebaseio.com/");
     public MyAdapter(ArrayList<String> list, ArrayList<String> list1, ArrayList<String> bm,ValueEventListener context) {
@@ -73,10 +79,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolderm>{
     public void onBindViewHolder(@NonNull final MyViewHolderm holder, final int position) {
         mAuth = FirebaseAuth.getInstance();
         user=mAuth.getCurrentUser().getUid();
+        ppp=mref.getReference("user_details");
+        pp=mref.getReference("user_id");
      final String title= list.get(position);
      holder.tn.setText(title);
      final String link=list1.get(position);
      String DP=bm.get(position);
+     Main2Activity a=new Main2Activity();
+
 
         Glide.with(holder.tm.getContext()).load(link).apply(new RequestOptions().override(411,355)).into(holder.tm);
         Glide.with(holder.dp.getContext()).load(DP).into(holder.dp);
@@ -91,12 +101,49 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolderm>{
                 pass = "null";
                 Log.d(TAG, "onCheckedChanged: ");
                 username.child("link").setValue(link);
+
+
                 username.child("reactions").setValue("r");
+                hellow();
+//                ppp.child().setValue(link);
+
             }else {
                 Log.d(TAG,"remave");
                 pass="remove";
                 read(USERNAME,link ,holder);
             }
+        }
+
+        private void hellow() {
+            Random rand=new Random();
+            int random=rand.nextInt();
+            final String Random =Integer.toString(random);
+            vl=ppp.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for(DataSnapshot ds:snapshot.getChildren()){
+                        String name=ds.getKey();
+                        String id=ds.getValue().toString();
+                        if (name.equals(title)){
+
+                            key = ds.getValue().toString();
+
+
+                        }if(id.equals(user)){
+                            pop = ds.getKey();
+                        }
+                    }
+                    pp.child(key).child(pop+Random).setValue(link);
+                    ppp.removeEventListener(vl);
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
         }
     });
     }

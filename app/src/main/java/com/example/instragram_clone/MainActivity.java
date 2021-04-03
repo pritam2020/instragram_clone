@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(us!=null){
             Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
     }
